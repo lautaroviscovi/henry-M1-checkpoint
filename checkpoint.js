@@ -152,19 +152,14 @@ LinkedList.prototype.addInPos = function(pos, value){
 
 
 LinkedList.prototype.reverse = function(){
-/*    var link = this;
-    var novel = new LinkedList();
-  var current = this.head.next;
-    var previous = this.head;
-  while(link.size() >0){
-    if(current.next === null) novel.add(link.remove());
-    previous = nodoActual;
-        if(current.next) current = current.next;
-  }
-    return novel;
-}
-*/
+  var backLl = new LinkedList();  
+  var value = this.remove();
+    while( value !== undefined ){
+      backLl.add( value );
+    value = this.remove();
+  }  
 
+  return backLl;
 }
 
 
