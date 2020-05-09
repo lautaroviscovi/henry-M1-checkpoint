@@ -123,18 +123,18 @@ LinkedList.prototype.size = function(){
 
 LinkedList.prototype.addInPos = function(pos, value){
     if (pos > 0 && pos > this.size()) return false;
-    else {
-        var node = new Node(value);
-        if (pos === 0) {
-            node.next = this.head;
-            this.head = node;
-        } else {
-            current = this.head;
-            var operator = 0;
-    while (operator < pos) {
-        operator++;
-        previous = current;
-        current = current.next;
+      else {
+var node = new Node(value);
+  if (pos === 0) {
+    node.next = this.head;
+    this.head = node;
+      } else {
+    current = this.head;
+var operator = 0;
+  while (operator < pos) {
+    operator++;
+      previous = current;
+      current = current.next;
     }
     node.next = current;
     previous.next = node;
@@ -327,7 +327,24 @@ function closureSum(numFijo) {
 //    console.log(anagrams); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
 
 var allAnagrams = function(string, array, index) {
-
+  if(string.length < 2) return [string];
+    else{
+      var anagrams = [];
+        for(var i = 0; i < string.length; i++){
+      var array = string.split("");
+      var word = array[i];
+        array.splice( i, 1 );
+      var join = allAnagrams(array.join(""));
+        for (var j = 0; j < join.length; j++){
+          boolean = true;
+          anagrams.forEach(function(item){
+        if(item === word + join[j] ) boolean = false;
+          })
+        if(boolean) anagrams.push (word + join[j]);
+          }
+      }
+  return anagrams;
+  }
 };
 
 module.exports = {
